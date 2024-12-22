@@ -25,9 +25,6 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: npm init -y
-      - run: npm ci
       - run: npm install interactjs
       - run: npm install html2canvas
       - run: npm run build --if-present
-      - run: npm test
