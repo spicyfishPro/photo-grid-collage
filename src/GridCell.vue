@@ -8,7 +8,7 @@
       ref="image"
       :style="imageStyle"
     />
-    <div v-else class="placeholder">拖拽或点击添加图片</div>
+    <div v-else class="placeholder">请上传图片</div>
   </div>
 </template>
 

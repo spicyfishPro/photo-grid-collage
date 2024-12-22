@@ -36,6 +36,9 @@
         @updateImage="updateCellImage(index, $event)"
       />
     </div>
+    <div v-if="isLoading" class="loading-overlay">
+      <div class="spinner"></div>
+    </div>
   </div>
 </template>
 
@@ -54,6 +57,7 @@ export default {
       gridCells: [],
       uploadedImages: [],
       exportedImage: null,
+      isLoading: false,
     };
   },
   computed: {
@@ -109,12 +113,19 @@ export default {
       });
     },
     exportImage() {
+      this.isLoading = true; // 开始加载动画
       html2canvas(this.$refs.gridContainer, {
         useCORS: true,
-        scale: 3, // 将 scale 设置为 3，提升图片清晰度
-      }).then((canvas) => {
-        this.exportedImage = canvas.toDataURL("image/jpeg");
-      });
+        scale: 3,
+      })
+        .then((canvas) => {
+          this.exportedImage = canvas.toDataURL("image/jpeg");
+          this.isLoading = false; // 结束加载动画
+        })
+        .catch(() => {
+          this.isLoading = false; // 即使发生错误也要结束加载动画
+          alert("导出失败，请重试。");
+        });
     },
   },
   mounted() {
@@ -149,5 +160,36 @@ export default {
 
 a {
   margin-left: 10px;
+}
+/* 加载动画样式 */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #333;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 </style>
