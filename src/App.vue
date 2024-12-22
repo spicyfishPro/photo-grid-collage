@@ -17,6 +17,16 @@
         >下载图片</a
       >
     </div>
+    <div>
+      <label for="grid-gap-slider">调整网格间距：{{ gridGap }}px</label>
+      <input
+        id="grid-gap-slider"
+        type="range"
+        min="2"
+        max="20"
+        v-model="gridGap"
+      />
+    </div>
 
     <div class="grid-container" :style="gridStyle" ref="gridContainer">
       <GridCell
@@ -40,6 +50,7 @@ export default {
   data() {
     return {
       gridSize: 2,
+      gridGap: 10, // px
       gridCells: [],
       uploadedImages: [],
       exportedImage: null,
@@ -123,7 +134,7 @@ export default {
 
 .grid-container {
   display: grid;
-  grid-gap: 5px;
+  gap: v-bind(gridGap + "px");
   margin: 10px;
 }
 
