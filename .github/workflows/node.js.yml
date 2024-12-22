@@ -28,3 +28,11 @@ jobs:
       - run: npm install interactjs
       - run: npm install html2canvas
       - run: npm run build --if-present
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: dist/*
+          name: Release ${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
