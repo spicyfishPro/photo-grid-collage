@@ -3,6 +3,8 @@
   <div id="app">
     <h1>Photo Grid Collage</h1>
     <div class="controls">
+      <input type="file" multiple accept="image/*" @change="handleFileUpload" />
+
       <label for="grid-size">选择网格大小：</label>
       <select v-model="gridSize" @change="generateGrid">
         <option v-for="n in 9" :key="n + 1" :value="n + 1">
@@ -10,14 +12,6 @@
         </option>
       </select>
 
-      <input type="file" multiple accept="image/*" @change="handleFileUpload" />
-
-      <button @click="exportImage">导出为 JPEG</button>
-      <a v-if="exportedImage" :href="exportedImage" download="collage.jpg"
-        >下载图片</a
-      >
-    </div>
-    <div>
       <label for="grid-gap-slider">调整网格间距：{{ gridGap }}px</label>
       <input
         id="grid-gap-slider"
@@ -26,6 +20,11 @@
         max="20"
         v-model="gridGap"
       />
+
+      <button @click="exportImage">导出为 JPEG</button>
+      <a v-if="exportedImage" :href="exportedImage" download="collage.jpg"
+        >下载图片</a
+      >
     </div>
 
     <div class="grid-container" :style="gridStyle" ref="gridContainer">
