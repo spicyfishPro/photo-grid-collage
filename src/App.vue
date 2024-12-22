@@ -109,11 +109,12 @@ export default {
       });
     },
     exportImage() {
-      html2canvas(this.$refs.gridContainer, { useCORS: true }).then(
-        (canvas) => {
-          this.exportedImage = canvas.toDataURL("image/jpeg");
-        }
-      );
+      html2canvas(this.$refs.gridContainer, {
+        useCORS: true,
+        scale: 3, // 将 scale 设置为 3，提升图片清晰度
+      }).then((canvas) => {
+        this.exportedImage = canvas.toDataURL("image/jpeg");
+      });
     },
   },
   mounted() {
