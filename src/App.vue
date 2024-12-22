@@ -22,7 +22,7 @@
       <input
         id="grid-gap-slider"
         type="range"
-        min="2"
+        min="0"
         max="20"
         v-model="gridGap"
       />
