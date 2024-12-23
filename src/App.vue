@@ -38,6 +38,13 @@
     <div v-if="isLoading" class="loading-overlay">
       <div class="spinner"></div>
     </div>
+
+    <footer>
+      <p>
+        © 2024~2025 spicyfish. All rights reserved.
+        所有图片均在本地处理，不会上传到服务器。
+      </p>
+    </footer>
   </div>
 </template>
 
@@ -181,6 +188,13 @@ a {
   width: 60px;
   height: 60px;
   animation: spin 1s linear infinite;
+}
+
+footer {
+  margin-top: 20px;
+  text-align: center;
+  color: #666;
+  font-size: 14px;
 }
 
 @keyframes spin {
