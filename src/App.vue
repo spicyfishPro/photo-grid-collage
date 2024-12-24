@@ -154,7 +154,7 @@ export default {
           this.isLoading = false; // 结束加载动画
         })
         .catch(() => {
-          this.isLoading = false; // 即使发生错误也要结束加载动画
+          this.isLoading = false; // 发生错误，结束加载动画
           alert("导出失败，请重试。");
         });
     },
@@ -253,7 +253,7 @@ a {
 
 .grid-cell {
   width: 100%;
-  padding-bottom: 100%; /* 使单元格为正方形 */
+  padding-bottom: 100%; 
   position: relative;
   overflow: hidden;
   background-color: #f0f0f0;
