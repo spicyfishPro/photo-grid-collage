@@ -1,7 +1,7 @@
 <!-- App.vue -->
 <template>
   <div id="app">
-    <h1>Photo Grid Collage</h1>
+    <h1>Photo Grid Collage: n宫格图片生成器</h1>
     <div class="controls">
       <div class="control-item">
         <label for="grid-size">选择网格大小：</label>
@@ -23,7 +23,7 @@
         </label>
       </div>
       <div class="control-item">
-        <label for="grid-gap-slider">调整网格间距：{{ gridGap }}px</label>
+        <label for="grid-gap-slider">网格间距：{{ gridGap }}px</label>
       </div>
       <div class="control-item" id="grid-gap-slider-container">
         <input
@@ -34,8 +34,8 @@
           v-model="gridGap"
         />
       </div>
-      <div class="control-item export-button">
-        <button @click="exportImage">导出为 JPEG</button>
+      <div class="control-item">
+        <button class="export-button" @click="exportImage">导出为 JPG</button>
         <button
           class="download-button"
           v-if="exportedImage"
@@ -46,7 +46,11 @@
         </button>
       </div>
     </div>
-
+    <div>
+      <p class="help-text">
+        Tips：拖动图片改变位置，缩放图片或滚动鼠标滚轮更改大小。
+      </p>
+    </div>
     <div class="grid-container" :style="gridStyle" ref="gridContainer">
       <GridCell
         v-for="(cell, index) in gridCells"
@@ -150,7 +154,7 @@ export default {
           this.isLoading = false; // 结束加载动画
         })
         .catch(() => {
-          this.isLoading = false; // 即使发生错误也要结束加载动画
+          this.isLoading = false; // 发生错误，结束加载动画
           alert("导出失败，请重试。");
         });
     },
@@ -203,10 +207,17 @@ h1 {
 
 .export-button {
   margin-left: auto;
+  font-size: 14px;
 }
+
 .download-button {
   margin-left: 10px;
+  background-color: #4caf50;
   font-size: 14px;
+}
+
+.download-button:hover {
+  background-color: #45a049;
 }
 
 #grid-gap-slider-container {
@@ -242,7 +253,7 @@ a {
 
 .grid-cell {
   width: 100%;
-  padding-bottom: 100%; /* 使单元格为正方形 */
+  padding-bottom: 100%; 
   position: relative;
   overflow: hidden;
   background-color: #f0f0f0;
