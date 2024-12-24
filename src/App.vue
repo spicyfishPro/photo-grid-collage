@@ -23,7 +23,7 @@
         </label>
       </div>
       <div class="control-item">
-        <label for="grid-gap-slider">调整网格间距：{{ gridGap }}px</label>
+        <label for="grid-gap-slider">网格间距：{{ gridGap }}px</label>
       </div>
       <div class="control-item" id="grid-gap-slider-container">
         <input
@@ -34,8 +34,8 @@
           v-model="gridGap"
         />
       </div>
-      <div class="control-item export-button">
-        <button @click="exportImage">导出为 JPEG</button>
+      <div class="control-item">
+        <button class="export-button" @click="exportImage">导出为 JPG</button>
         <button
           class="download-button"
           v-if="exportedImage"
@@ -46,7 +46,11 @@
         </button>
       </div>
     </div>
-
+    <div>
+      <p class="help-text">
+        Tips：拖动图片改变位置，缩放图片或滚动鼠标滚轮更改大小。
+      </p>
+    </div>
     <div class="grid-container" :style="gridStyle" ref="gridContainer">
       <GridCell
         v-for="(cell, index) in gridCells"
@@ -203,6 +207,7 @@ h1 {
 
 .export-button {
   margin-left: auto;
+  font-size: 14px;
 }
 
 .download-button {
@@ -212,7 +217,7 @@ h1 {
 }
 
 .download-button:hover {
-  background-color: #45a049; 
+  background-color: #45a049;
 }
 
 #grid-gap-slider-container {
