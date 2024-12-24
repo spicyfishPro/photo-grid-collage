@@ -3,28 +3,41 @@
   <div id="app">
     <h1>Photo Grid Collage</h1>
     <div class="controls">
-      <input type="file" multiple accept="image/*" @change="handleFileUpload" />
-
-      <label for="grid-size">选择网格大小：</label>
-      <select v-model="gridSize" @change="generateGrid">
-        <option v-for="n in 9" :key="n + 1" :value="n + 1">
-          {{ n + 1 }} x {{ n + 1 }}
-        </option>
-      </select>
-
-      <label for="grid-gap-slider">调整网格间距：{{ gridGap }}px</label>
-      <input
-        id="grid-gap-slider"
-        type="range"
-        min="0"
-        max="20"
-        v-model="gridGap"
-      />
-
-      <button @click="exportImage">导出为 JPEG</button>
-      <a v-if="exportedImage" :href="exportedImage" download="collage.jpg"
-        >下载图片</a
-      >
+      <div class="control-item">
+        <label for="grid-size">选择网格大小：</label>
+        <select v-model="gridSize" @change="generateGrid">
+          <option v-for="n in 9" :key="n + 1" :value="n + 1">
+            {{ n + 1 }} x {{ n + 1 }}
+          </option>
+        </select>
+      </div>
+      <div class="control-item">
+        <label class="custom-file-upload">
+          <input
+            type="file"
+            multiple
+            accept="image/*"
+            @change="handleFileUpload"
+          />
+          上传图片
+        </label>
+      </div>
+      <div class="control-item">
+        <label for="grid-gap-slider">调整网格间距：{{ gridGap }}px</label>
+        <input
+          id="grid-gap-slider"
+          type="range"
+          min="0"
+          max="20"
+          v-model="gridGap"
+        />
+      </div>
+      <div class="control-item export-button">
+        <button @click="exportImage">导出为 JPEG</button>
+        <a v-if="exportedImage" :href="exportedImage" download="collage.jpg"
+          >下载图片</a
+        >
+      </div>
     </div>
 
     <div class="grid-container" :style="gridStyle" ref="gridContainer">
@@ -70,6 +83,7 @@ export default {
     gridStyle() {
       return {
         "grid-template-columns": `repeat(${this.gridSize}, 1fr)`,
+        gap: `${this.gridGap}px`,
       };
     },
   },
@@ -144,16 +158,67 @@ export default {
 #app {
   font-family: Arial, sans-serif;
   padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  font-size: 2em;
+  margin-bottom: 20px;
 }
 
 .controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 15px;
   margin-bottom: 20px;
+}
+
+.control-item {
+  display: flex;
+  align-items: center;
+}
+
+.control-item label {
+  margin-right: 5px;
+}
+
+.control-item select,
+.control-item input[type="range"] {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.export-button {
+  margin-left: auto;
+}
+
+button {
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: #2196f3;
+  color: #fff;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #0b7dda;
+}
+
+a {
+  margin-left: 10px;
+  color: #4caf50;
 }
 
 .grid-container {
   display: grid;
-  gap: v-bind(gridGap + "px");
-  margin: 10px;
+  max-width: 1000px;
+  margin: 10px auto;
 }
 
 .grid-cell {
@@ -164,9 +229,24 @@ export default {
   background-color: #f0f0f0;
 }
 
-a {
-  margin-left: 10px;
+/* 自定义上传按钮 */
+.custom-file-upload {
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background-color: #2196f3;
+  color: #fff;
+  border-radius: 4px;
 }
+
+.custom-file-upload:hover {
+  background-color: #0b7dda;
+}
+
+.custom-file-upload input[type="file"] {
+  display: none;
+}
+
 /* 加载动画样式 */
 .loading-overlay {
   position: fixed;
