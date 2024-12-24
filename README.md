@@ -1,5 +1,11 @@
 # photo-grid-collage
 
+## 介绍
+
+这是一个基于 vue3 的图片网格拼图组件，可以用于制作 n\*n 图片拼图效果，例如九宫格、81 宫格、114\*114 宫格等。
+
+![image](https://github.com/user-attachments/assets/c5487635-e3bf-4b60-8353-615f67dd5b48)
+
 ## Project setup
 
 ```
@@ -27,9 +33,3 @@ npm run lint
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
-
-## 介绍
-
-这是一个基于 vue3 的图片网格拼图组件，可以用于制作 n\*n 图片拼图效果，例如九宫格、81 宫格、114\*114 宫格等。
-![image](https://github.com/user-attachments/assets/c5487635-e3bf-4b60-8353-615f67dd5b48)
-
