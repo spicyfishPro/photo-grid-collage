@@ -24,6 +24,8 @@
       </div>
       <div class="control-item">
         <label for="grid-gap-slider">调整网格间距：{{ gridGap }}px</label>
+      </div>
+      <div class="control-item" id="grid-gap-slider-container">
         <input
           id="grid-gap-slider"
           type="range"
@@ -34,9 +36,14 @@
       </div>
       <div class="control-item export-button">
         <button @click="exportImage">导出为 JPEG</button>
-        <a v-if="exportedImage" :href="exportedImage" download="collage.jpg"
-          >下载图片</a
+        <button
+          class="download-button"
+          v-if="exportedImage"
+          :href="exportedImage"
+          download="collage.jpg"
         >
+          下载图片
+        </button>
       </div>
     </div>
 
@@ -174,6 +181,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: space-between;
   gap: 15px;
   margin-bottom: 20px;
 }
@@ -196,18 +204,29 @@ h1 {
 .export-button {
   margin-left: auto;
 }
+.download-button {
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+#grid-gap-slider-container {
+  margin-right: auto;
+  margin-left: 10px;
+}
 
 button {
-  display: inline-block;
   padding: 6px 12px;
   cursor: pointer;
   background-color: #2196f3;
   color: #fff;
+  border: 0px;
+  /* border: 2px solid #2196f3; */
   border-radius: 4px;
 }
 
 button:hover {
   background-color: #0b7dda;
+  /* border-color: #0b7dda; */
 }
 
 a {
@@ -237,6 +256,7 @@ a {
   background-color: #2196f3;
   color: #fff;
   border-radius: 4px;
+  font-size: 14px;
 }
 
 .custom-file-upload:hover {
