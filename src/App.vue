@@ -1,7 +1,7 @@
 <!-- App.vue -->
 <template>
   <div id="app">
-    <h1>Photo Grid Collage</h1>
+    <h1>Photo Grid Collage: n宫格图片生成器</h1>
     <div class="controls">
       <div class="control-item">
         <label for="grid-size">选择网格大小：</label>
@@ -204,9 +204,15 @@ h1 {
 .export-button {
   margin-left: auto;
 }
+
 .download-button {
   margin-left: 10px;
+  background-color: #4caf50;
   font-size: 14px;
+}
+
+.download-button:hover {
+  background-color: #45a049; 
 }
 
 #grid-gap-slider-container {
