@@ -79,7 +79,7 @@ export default {
   data() {
     return {
       gridSize: 2,
-      gridGap: 10, // px
+      gridGap: 0, // px
       gridCells: [],
       uploadedImages: [],
       exportedImage: null,
