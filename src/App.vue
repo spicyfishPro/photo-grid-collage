@@ -19,7 +19,7 @@
             accept="image/*"
             @change="handleFileUpload"
           />
-          上传图片
+          添加图片
         </label>
       </div>
       <div class="control-item">
@@ -112,7 +112,7 @@ export default {
       const totalCells = this.gridSize * this.gridSize;
       const remainingSlots = totalCells - this.uploadedImages.length;
       if (files.length > remainingSlots) {
-        alert(`您最多还能上传 ${remainingSlots} 张图片`);
+        alert(`您最多还能添加 ${remainingSlots} 张图片`);
         return;
       }
       files.forEach((file) => {
