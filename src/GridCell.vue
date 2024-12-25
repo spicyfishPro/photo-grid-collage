@@ -186,4 +186,10 @@ export default {
   font-size: 14px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 600px) {
+  .placeholder {
+    font-size: 10px;
+  }
+}
 </style>

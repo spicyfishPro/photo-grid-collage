@@ -48,7 +48,7 @@
     </div>
     <div>
       <p class="help-text">
-        Tips：拖动图片改变位置，缩放图片或滚动鼠标滚轮更改大小。
+        Tips：拖动图片改变位置，缩放图片或滚动鼠标滚轮更改大小。下方预览效果即为导出效果。
       </p>
     </div>
     <div class="grid-container" :style="gridStyle" ref="gridContainer">
@@ -62,11 +62,10 @@
     <div v-if="isLoading" class="loading-overlay">
       <div class="spinner"></div>
     </div>
-
     <footer>
       <p>
-        © 2024~2025 spicyfish. All rights reserved.
-        所有图片均在本地处理，不会上传到服务器。
+        © 2024~2025 spicyfish. All rights reserved. <br />
+        所有图片均在本地处理，不会上传到服务器
       </p>
     </footer>
   </div>
@@ -168,7 +167,8 @@ export default {
 <style>
 #app {
   font-family: Arial, sans-serif;
-  padding: 20px;
+  padding: 15px;
+  padding-bottom: 0;
   max-width: 1200px;
   margin: 0 auto;
   background-color: #fff;
@@ -253,7 +253,7 @@ a {
 
 .grid-cell {
   width: 100%;
-  padding-bottom: 100%; 
+  padding-bottom: 100%;
   position: relative;
   overflow: hidden;
   background-color: #f0f0f0;
@@ -304,8 +304,8 @@ a {
 footer {
   margin-top: 20px;
   text-align: center;
-  color: #666;
-  font-size: 14px;
+  color: #777;
+  font-size: 13px;
 }
 
 @keyframes spin {
@@ -314,6 +314,23 @@ footer {
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+@media screen and (max-width: 600px) {
+  h1 {
+    font-size: 1.2em;
+  }
+
+  .controls {
+    font-size: 0.9em;
+  }
+
+  .help-text {
+    font-size: 12px;
+  }
+
+  #app {
+    padding: 10px;
   }
 }
 </style>
