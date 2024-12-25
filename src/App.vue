@@ -39,8 +39,7 @@
         <button
           class="download-button"
           v-if="exportedImage"
-          :href="exportedImage"
-          download="collage.jpg"
+          @click="downloadImage"
         >
           下载图片
         </button>
@@ -156,6 +155,12 @@ export default {
           this.isLoading = false; // 发生错误，结束加载动画
           alert("导出失败，请重试。");
         });
+    },
+    downloadImage() {
+      const link = document.createElement("a");
+      link.href = this.exportedImage;
+      link.download = "collage.jpg";
+      link.click();
     },
   },
   mounted() {
@@ -318,7 +323,7 @@ footer {
 }
 @media screen and (max-width: 600px) {
   h1 {
-    font-size: 1.2em;
+    font-size: 1.15em;
   }
 
   .controls {
