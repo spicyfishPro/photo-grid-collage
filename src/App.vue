@@ -63,7 +63,8 @@
     </div>
     <footer>
       <p>
-        © 2024~2025 spicyfish. All rights reserved. <br />
+        © 2024~2025 spicyfish. All rights reserved.
+        <a style="color: #777" href="mailto:a@spicyfish.cn"> 联系我们</a><br />
         所有图片均在本地处理，不会上传到服务器
       </p>
     </footer>
